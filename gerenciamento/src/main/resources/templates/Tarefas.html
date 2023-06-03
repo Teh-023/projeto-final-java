@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript"></script>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de Tarefas</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
 </head>
 <body>
+    <div class="container">
+        <h1>Gerenciamento de Tarefas</h1>
 
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Descrição</th>
+                    <th>Status</th>
+                    <th>Data de Conclusão</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.title}"></td>
+                    <td th:text="${task.description}"></td>
+                    <td th:text="${task.status}"></td>
+                    <td th:text="${task.completionDate}"></td>
+                    <td>
+                        <a th:href="@{/tasks/edit/{id}(id=${task.id})}">Editar</a>
+                        <a th:href="@{/tasks/delete/{id}(id=${task.id})}">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/tasks/create">Criar Tarefa</a>
+    </div>
 </body>
 </html>
+

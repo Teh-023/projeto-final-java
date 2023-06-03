@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar tarefa</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Tarefa</h1>
+
+        <form th:action="@{/tasks/update/{id}(id=${task.id})}" method="post">
+            <div class="form-group">
+                <label>Titulo</label>
+                <input class="form-control" type="text" th:name="*{title}" th:value="${task.title}" required>
+            </div>
+            <div class="form-group">
+               
